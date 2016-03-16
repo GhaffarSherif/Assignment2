@@ -15,6 +15,7 @@ import android.widget.Toast;
 public class MainActivity extends Activity implements View.OnClickListener {
     Button exitButton;
     Button continueButton;
+    String chosenInvestor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +44,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
     public void onActivityResult(int requestCode, int resultCode, Intent data)   {
         if ((requestCode == 1) && (resultCode == RESULT_OK))   { //AFTER INVESTORS ARE CHOSEN AND RETURN TO MAINACTIVITY
             Toast.makeText(this,data.getData().toString(), Toast.LENGTH_SHORT).show();
+            chosenInvestor = data.getData().toString();
         }
         else {
             Toast.makeText(this, "No investors chosen, bye!", Toast.LENGTH_LONG).show();
@@ -60,10 +62,9 @@ public class MainActivity extends Activity implements View.OnClickListener {
 
             // TO CREATE METHOD TO CHECK SELECTED INVESTORS
             Bundle investor = new Bundle();
-            investor.putString("investor1", "tony");
-            investor.putString("investor2", "maria");
+            investor.putString("chosenInvestor", chosenInvestor);
             i.putExtras(investor);
-           startActivityForResult(i, 1);
+            startActivityForResult(i, 1);
         }
     }
 }
