@@ -36,13 +36,13 @@ public class PickInvestorAct extends Activity implements View.OnClickListener {
             Intent data = new Intent();
 
             if(tonyCheckBox.isChecked() && !mariaCheckBox.isChecked()){
-                data.setData(Uri.parse("tony"));
+                data.setData(Uri.parse("Tony"));
             }
             else if (mariaCheckBox.isChecked() && !tonyCheckBox.isChecked()){
-                data.setData(Uri.parse("maria"));
+                data.setData(Uri.parse("Maria"));
             }
             else if(tonyCheckBox.isChecked() && mariaCheckBox.isChecked()) {
-                data.setData(Uri.parse("tony&maria"));
+                data.setData(Uri.parse("Tony & Maria"));
             }
             else{
                 finish();
