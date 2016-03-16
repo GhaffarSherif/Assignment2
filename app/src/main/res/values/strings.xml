@@ -3,4 +3,15 @@
 
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+
+    <string name="company1">Company 1</string>
+    <string name="company2">Company 2</string>
+    <string name="company3">Company 3</string>
+
+    <string name="buy">Buy</string>
+    <string name="sell">Sell</string>
+    <string name="portfolio">Portfolio</string>
+
+    <string name="exit">Exit</string>
+    <string name="doTransaction">Do Transaction</string>
 </resources>
