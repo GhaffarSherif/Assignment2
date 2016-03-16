@@ -3,18 +3,20 @@ package com.example.cstuser.assignment2;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 
 public class MainActivity extends Activity implements View.OnClickListener {
     Button exitButton;
     Button continueButton;
+    TextView labelTextView;
+    TextView investorsTextView;
+
     String chosenInvestor;
 
     @Override
@@ -25,6 +27,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         // Initializing Buttons and listeners for them
         exitButton = (Button) this.findViewById(R.id.exitButton);
         continueButton = (Button) this.findViewById(R.id.continueButton);
+        labelTextView = (TextView) this.findViewById(R.id.labelTextView);
+        investorsTextView = (TextView) this.findViewById(R.id.investorsTextView);
 
         exitButton.setOnClickListener(this);
         continueButton.setOnClickListener(this);
@@ -43,7 +47,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
     //Code for returning results through data from Activity 2
     public void onActivityResult(int requestCode, int resultCode, Intent data)   {
         if ((requestCode == 1) && (resultCode == RESULT_OK))   { //AFTER INVESTORS ARE CHOSEN AND RETURN TO MAINACTIVITY
-            Toast.makeText(this,data.getData().toString(), Toast.LENGTH_SHORT).show();
+            showWidgets(); // Make widgets visible
+            Toast.makeText(this,data.getData().toString(), Toast.LENGTH_SHORT).show(); //ONLY FOR TESTING
             chosenInvestor = data.getData().toString();
         }
         else {
@@ -66,6 +71,12 @@ public class MainActivity extends Activity implements View.OnClickListener {
             i.putExtras(investor);
             startActivityForResult(i, 1);
         }
+    }
+
+    private void showWidgets(){
+        exitButton.setVisibility(View.VISIBLE);
+        continueButton.setVisibility(View.VISIBLE);
+        labelTextView.setVisibility(View.VISIBLE);
     }
 }
 
