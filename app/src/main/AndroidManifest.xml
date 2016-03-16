@@ -24,6 +24,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name=".PickCompTransAct"
+            android:label="StockMarket" >
+            <intent-filter>
+                <action android:name="com.example.cstuser.assignment2.PickCompTransAct" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
 
     </application>
