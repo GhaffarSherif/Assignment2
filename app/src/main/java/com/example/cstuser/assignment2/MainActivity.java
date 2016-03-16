@@ -25,9 +25,21 @@ public class MainActivity extends Activity {
             @Override
             public void run() {
                 Intent i = new Intent("com.example.cstuser.assignment2.PickInvestorAct");
-                startActivity(i);
+                startActivityForResult(i, 1);
             }
         }, 3000);
-
     }
+
+    //Code for returning results through data from Activity 2
+    public void onActivityResult(int requestCode, int resultCode, Intent data)   {
+        if ((requestCode == 1) && (resultCode == RESULT_OK))    {
+            Toast.makeText(this,data.getData().toString(), Toast.LENGTH_SHORT).show();
+        }
+        else {
+            Toast.makeText(this, "No investors chosen, bye!", Toast.LENGTH_LONG).show();
+            finish();
+        }
+    }
+
 }
+
