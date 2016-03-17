@@ -4,29 +4,29 @@ import java.util.ArrayList;
 /**
  * Created by sherif on 2016-03-17.
  */
-public class investorPortfolio {
-    String investorName;
-    String company;
-    int transactionNumber;
-    int cashAvailable;
-    int company1Stocks;
-    int company2Stocks;
-    int company3Stocks;
-    int company1UnitPrice;
-    int company2UnitPrice;
-    int company3UnitPrice;
-    char transactionType;
+public class InvestorPortfolio {
+    static String investorName;
+    static String company;
+    static int transactionNumber;
+    static int cashAvailable;
+    static int company1Stocks;
+    static int company2Stocks;
+    static int company3Stocks;
+    static int company1UnitPrice;
+    static int company2UnitPrice;
+    static int company3UnitPrice;
+    static char transactionType;
 
     String transactionOutput="";
 
-    public investorPortfolio(String name){
-        if (name.equals("tony")){
+    public InvestorPortfolio(String name){
+        if (name.equals("Tony")){
             setTonyPortfolio();
         }
-        else if (name.equals("maria")){
+        else if (name.equals("Maria")){
             setMariaPortfolio();
         }
-        else if (name.equals("tony&maria")){
+        else if (name.equals("Tony & Maria")){
             setBothPortfolio();
         }
 
@@ -58,6 +58,8 @@ public class investorPortfolio {
             createRow(transactionNumber, company, transactionType, company3Stocks, sellPrice);
         }
     }
+
+    //TO DO
     public void buyStocks(String Company, int amount){
 
     }
@@ -70,7 +72,7 @@ public class investorPortfolio {
     // setup portfolio for tony
     private void setTonyPortfolio(){
 
-        investorName = "tony";
+        investorName = "Tony";
         cashAvailable = 1000;
         //Trasaction 1
         transactionNumber = 1;
@@ -94,7 +96,7 @@ public class investorPortfolio {
     //setup portfolio for maria
     private void setMariaPortfolio(){
 
-        investorName = "maria";
+        investorName = "Maria";
         cashAvailable = 2000;
 
         //Trasaction 1
@@ -117,7 +119,7 @@ public class investorPortfolio {
     //Set up portfolio of maria and tony combined
     private void setBothPortfolio(){
 
-        investorName = "tony&maria";
+        investorName = "Tony & Maria";
         cashAvailable = 3000;
 
         //Trasaction 1

@@ -5,38 +5,46 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Selected Investors:"
+        android:text="@string/labelTextView"
         android:id="@+id/labelTextView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
         android:textStyle="bold"
         android:textIsSelectable="true"
-        android:textSize="20dp"
-        android:visibility="invisible" />
+        android:textSize="20sp"
+        android:visibility="invisible"
+        android:singleLine="false" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exit"
+        android:text="@string/exit"
         android:id="@+id/exitButton"
         android:layout_marginTop="127dp"
         android:layout_below="@+id/investorsTextView"
-        android:layout_toStartOf="@+id/continueButton"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="false"
+        android:layout_toStartOf="@+id/investorsTextView" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Continue"
+        android:text="@string/continueButton"
         android:id="@+id/continueButton"
         android:layout_alignTop="@+id/exitButton"
-        android:layout_toEndOf="@+id/labelTextView"
-        android:visibility="invisible" />
+        android:visibility="invisible"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="false"
+        android:layout_toEndOf="@+id/exitButton"
+        android:layout_toRightOf="@+id/exitButton" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/investorsTextView"
+        android:layout_marginTop="79dp"
+        android:textSize="20sp"
         android:layout_below="@+id/labelTextView"
-        android:layout_alignEnd="@+id/exitButton" />
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

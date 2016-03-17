@@ -50,6 +50,7 @@ public class MainActivity extends Activity implements View.OnClickListener {
             showWidgets(); // Make widgets visible
             Toast.makeText(this,data.getData().toString(), Toast.LENGTH_SHORT).show(); //ONLY FOR TESTING
             chosenInvestor = data.getData().toString();
+            investorsTextView.setText(chosenInvestor);
         }
         else {
             Toast.makeText(this, "No investors chosen, bye!", Toast.LENGTH_LONG).show();

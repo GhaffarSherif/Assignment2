@@ -6,7 +6,7 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Please Select An Investor:"
+        android:text="@string/pickInvestorLabel"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true" />
@@ -14,7 +14,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Tony"
+        android:text="@string/tony"
         android:id="@+id/tonyCheckBox"
         android:layout_below="@+id/textView"
         android:layout_alignParentStart="true"
@@ -23,7 +23,7 @@
     <CheckBox
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Maria"
+        android:text="@string/maria"
         android:id="@+id/mariaCheckBox"
         android:layout_alignTop="@+id/tonyCheckBox"
         android:layout_toEndOf="@+id/tonyCheckBox"
@@ -32,7 +32,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Exit"
+        android:text="@string/exit"
         android:id="@+id/exitButton"
         android:layout_below="@+id/tonyCheckBox"
         android:layout_alignParentStart="true" />
@@ -40,7 +40,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Return"
+        android:text="@string/returnButton"
         android:id="@+id/returnButton"
         android:layout_below="@+id/mariaCheckBox"
         android:layout_toEndOf="@+id/exitButton" />

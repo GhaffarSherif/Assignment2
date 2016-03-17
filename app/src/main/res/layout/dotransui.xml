@@ -5,17 +5,16 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Display Portfolio here"
-        android:id="@+id/portfolioDiplay"
+        android:id="@+id/portfolioDisplay"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textSize="20dp" />
+        android:textSize="20sp" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Perform Transaction"
+        android:text="@string/performTransaction"
         android:id="@+id/button"
         android:layout_marginBottom="79dp"
         android:layout_alignParentBottom="true"
@@ -29,31 +28,47 @@
         android:layout_height="wrap_content"
         android:inputType="number"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/price"
         android:layout_above="@+id/button"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
+        android:layout_toLeftOf="@+id/currentStocks"
+        android:layout_toStartOf="@+id/currentStocks"
+        android:hint="@string/price" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/quantity"
+        android:layout_above="@+id/button"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentEnd="true"
+        android:layout_toRightOf="@+id/price"
+        android:layout_toEndOf="@+id/price"
+        android:hint="@string/quantity" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Company: "
+        android:text="@string/companyLabel"
         android:id="@+id/companyName"
-        android:textSize="20dp"
-        android:layout_above="@+id/editText"
+        android:textSize="20sp"
+        android:layout_above="@+id/quantity"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Current Stocks:"
-        android:id="@+id/textView2"
-        android:textSize="20dp"
-        android:layout_above="@+id/editText"
-        android:layout_toRightOf="@+id/portfolioDiplay"
-        android:layout_toEndOf="@+id/portfolioDiplay" />
+        android:text="@string/stocksLabel"
+        android:id="@+id/currentStocks"
+        android:textSize="20sp"
+        android:layout_alignTop="@+id/companyName"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginRight="52dp"
+        android:layout_marginEnd="52dp" />
 
 </RelativeLayout>
