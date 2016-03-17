@@ -1,9 +1,5 @@
 package portfolio;
 
-import java.util.ArrayList;
-/**
- * Created by sherif on 2016-03-17.
- */
 public class InvestorPortfolio {
     String investorName;
     String company;
@@ -29,7 +25,6 @@ public class InvestorPortfolio {
         else if (name.equals("Tony & Maria")){
             setBothPortfolio();
         }
-
     }
     public void sellStocks(String company, int sellPrice){ // sell all stocks
         int amount; //Amount made after stocks are sold
@@ -60,8 +55,32 @@ public class InvestorPortfolio {
     }
 
     //TO DO
-    public void buyStocks(String Company, int amount){
-
+    public void buyStocks(String company, int stocksAmount, int buyPrice){
+        int amount;
+        if (company.equals("Company 1")){
+            amount = company1Stocks*buyPrice;
+            company3Stocks += stocksAmount;
+            cashAvailable -= amount;
+            transactionType = 'B';
+            transactionNumber++;
+            createRow(transactionNumber, company, transactionType, company3Stocks, buyPrice);
+        }
+        else if (company.equals("Company 2")) {
+            amount = company2Stocks*buyPrice;
+            company2Stocks += stocksAmount;
+            cashAvailable -= amount;
+            transactionType = 'B';
+            transactionNumber++;
+            createRow(transactionNumber, company, transactionType, company2Stocks, buyPrice);
+        }
+        else {
+            amount = company3Stocks*buyPrice;
+            company3Stocks += stocksAmount;
+            cashAvailable -= amount;
+            transactionType = 'B';
+            transactionNumber++;
+            createRow(transactionNumber, company, transactionType, company3Stocks, buyPrice);
+        }
     }
 
     //Return all the transactions for this portfolio
