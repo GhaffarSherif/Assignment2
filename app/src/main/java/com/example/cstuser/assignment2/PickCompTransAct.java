@@ -10,6 +10,7 @@ import android.widget.TextView;
 
 import java.io.Serializable;
 
+import portfolio.DoTransAct;
 import portfolio.InvestorPortfolio;
 
 
@@ -54,6 +55,7 @@ public class PickCompTransAct extends Activity implements View.OnClickListener {
         doTransaction = (Button) this.findViewById(R.id.doTransaction);
 
         investorName.setText(thisIntent.getStringExtra("chosenInvestor"));
+        DoTransAct.portfolio = new InvestorPortfolio(thisIntent.getStringExtra("chosenInvestor"));
 
         exitButton.setOnClickListener(this);
         doTransaction.setOnClickListener(this);

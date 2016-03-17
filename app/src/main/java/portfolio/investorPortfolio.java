@@ -5,17 +5,17 @@ import java.util.ArrayList;
  * Created by sherif on 2016-03-17.
  */
 public class InvestorPortfolio {
-    static String investorName;
-    static String company;
-    static int transactionNumber;
-    static int cashAvailable;
-    static int company1Stocks;
-    static int company2Stocks;
-    static int company3Stocks;
-    static int company1UnitPrice;
-    static int company2UnitPrice;
-    static int company3UnitPrice;
-    static char transactionType;
+    String investorName;
+    String company;
+    int transactionNumber;
+    int cashAvailable;
+    int company1Stocks;
+    int company2Stocks;
+    int company3Stocks;
+    int company1UnitPrice;
+    int company2UnitPrice;
+    int company3UnitPrice;
+    char transactionType;
 
     String transactionOutput="";
 
@@ -32,10 +32,10 @@ public class InvestorPortfolio {
 
     }
     public void sellStocks(String company, int sellPrice){ // sell all stocks
-        int amount; //amount made ater stocks are sold
+        int amount; //Amount made after stocks are sold
         if (company.equals("Company 1")){
             amount = company1Stocks*sellPrice;
-            company1Stocks =0;
+            company1Stocks = 0;
             cashAvailable+= amount;
             transactionType = 'S';
             transactionNumber++;
@@ -43,16 +43,16 @@ public class InvestorPortfolio {
         }
         else if (company.equals("Company 2")){
             amount = company2Stocks*sellPrice;
-            company2Stocks =0;
-            cashAvailable+= amount;
+            company2Stocks = 0;
+            cashAvailable += amount;
             transactionType = 'S';
             transactionNumber++;
             createRow(transactionNumber, company, transactionType, company2Stocks, sellPrice);
         }
         else{
             amount = company3Stocks*sellPrice;
-            company3Stocks =0;
-            cashAvailable+= amount;
+            company3Stocks = 0;
+            cashAvailable += amount;
             transactionType = 'S';
             transactionNumber++;
             createRow(transactionNumber, company, transactionType, company3Stocks, sellPrice);
@@ -64,17 +64,18 @@ public class InvestorPortfolio {
 
     }
 
-    // Return all the transactions for this portfolio
+    //Return all the transactions for this portfolio
     public String getPortfolioTransactions(){
         return transactionOutput;
     }
 
-    // setup portfolio for tony
+    //Setup portfolio for tony
     private void setTonyPortfolio(){
 
         investorName = "Tony";
         cashAvailable = 1000;
-        //Trasaction 1
+
+        //Transaction 1
         transactionNumber = 1;
         company = "Company 1";
         transactionType = 'B';
@@ -90,16 +91,15 @@ public class InvestorPortfolio {
         company2Stocks= 50;
         company2UnitPrice = 9;
         createRow(transactionNumber, company, transactionType, company2Stocks, company2UnitPrice);
-
-
     }
-    //setup portfolio for maria
+
+    //Setup portfolio for maria
     private void setMariaPortfolio(){
 
         investorName = "Maria";
         cashAvailable = 2000;
 
-        //Trasaction 1
+        //Transaction 1
         transactionNumber = 1;
         company = "Company 2";
         transactionType = 'B';
@@ -116,13 +116,14 @@ public class InvestorPortfolio {
         company3UnitPrice = 5;
         createRow(transactionNumber, company, transactionType, company3Stocks, company3UnitPrice);
     }
+
     //Set up portfolio of maria and tony combined
     private void setBothPortfolio(){
 
         investorName = "Tony & Maria";
         cashAvailable = 3000;
 
-        //Trasaction 1
+        //Transaction 1
         transactionNumber = 1;
         company = "Company 1";
         transactionType = 'B';
@@ -148,7 +149,6 @@ public class InvestorPortfolio {
         company3UnitPrice = 5;
 
         createRow(transactionNumber, company, transactionType, company3Stocks, company3UnitPrice);
-
     }
 
     //Creates row for each transaction and appends to transactionOutput
