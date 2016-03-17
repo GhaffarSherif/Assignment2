@@ -52,7 +52,8 @@ public class PickCompTransAct extends Activity implements View.OnClickListener {
             finish();
         }
         else if(v.getId() == doTransaction.getId()){
-
+            Intent i = new Intent("portfolio.DoTransAct");
+            startActivityForResult(i, 1);
         }
     }
 }

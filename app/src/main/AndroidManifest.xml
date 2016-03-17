@@ -32,6 +32,14 @@
                 <category android:name="android.intent.category.DEFAULT" />
             </intent-filter>
         </activity>
+        <activity
+            android:name="portfolio.DoTransAct"
+            android:label="Trasaction" >
+            <intent-filter>
+                <action android:name="portfolio.DoTransAct" />
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
 
 
     </application>
