@@ -21,17 +21,47 @@ public class investorPortfolio {
 
     public investorPortfolio(String name){
         if (name.equals("tony")){
-
-
+            setTonyPortfolio();
         }
         else if (name.equals("maria")){
-
+            setMariaPortfolio();
         }
         else if (name.equals("tony&maria")){
-
+            setBothPortfolio();
         }
 
     }
+    public void sellStocks(String company, int sellPrice){ // sell all stocks
+        int amount; //amount made ater stocks are sold
+        if (company.equals("Company 1")){
+            amount = company1Stocks*sellPrice;
+            company1Stocks =0;
+            cashAvailable+= amount;
+            transactionType = 'S';
+            transactionNumber++;
+            createRow(transactionNumber, company, transactionType, company1Stocks, sellPrice);
+        }
+        else if (company.equals("Company 2")){
+            amount = company2Stocks*sellPrice;
+            company2Stocks =0;
+            cashAvailable+= amount;
+            transactionType = 'S';
+            transactionNumber++;
+            createRow(transactionNumber, company, transactionType, company2Stocks, sellPrice);
+        }
+        else{
+            amount = company3Stocks*sellPrice;
+            company3Stocks =0;
+            cashAvailable+= amount;
+            transactionType = 'S';
+            transactionNumber++;
+            createRow(transactionNumber, company, transactionType, company3Stocks, sellPrice);
+        }
+    }
+    public void buyStocks(String Company, int amount){
+
+    }
+
     // Return all the transactions for this portfolio
     public String getPortfolioTransactions(){
         return transactionOutput;
@@ -39,8 +69,9 @@ public class investorPortfolio {
 
     // setup portfolio for tony
     private void setTonyPortfolio(){
-        cashAvailable = 1000;
+
         investorName = "tony";
+        cashAvailable = 1000;
         //Trasaction 1
         transactionNumber = 1;
         company = "Company 1";
@@ -62,8 +93,9 @@ public class investorPortfolio {
     }
     //setup portfolio for maria
     private void setMariaPortfolio(){
-        cashAvailable = 2000;
+
         investorName = "maria";
+        cashAvailable = 2000;
 
         //Trasaction 1
         transactionNumber = 1;
@@ -84,8 +116,9 @@ public class investorPortfolio {
     }
     //Set up portfolio of maria and tony combined
     private void setBothPortfolio(){
-        cashAvailable = 3000;
+
         investorName = "tony&maria";
+        cashAvailable = 3000;
 
         //Trasaction 1
         transactionNumber = 1;
