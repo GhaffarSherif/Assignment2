@@ -13,7 +13,7 @@ import android.widget.Toast;
 import com.example.cstuser.assignment2.InvestorInterface;
 import com.example.cstuser.assignment2.R;
 
-public class DoTransAct extends Activity implements InvestorInterface {
+public class DoTransAct extends Activity implements View.OnClickListener, InvestorInterface {
     Intent thisIntent;
     String transactionType;
 
@@ -40,13 +40,16 @@ public class DoTransAct extends Activity implements InvestorInterface {
         companyName = (TextView) this.findViewById(R.id.companyName);
         companyName.setText(thisIntent.getStringExtra(CHOSEN_COMPANY));
         currentStocks = (TextView) this.findViewById(R.id.currentStocks);
+
         setCurrentStocks();
+
         availableCash = (TextView) this.findViewById(R.id.availableCash);
         availableCash.setText(availableCash.getText().toString() + " " + portfolio.cashAvailable);
 
         price = (EditText) this.findViewById(R.id.price);
         quantity = (EditText) this.findViewById(R.id.quantity);
         performTransaction = (Button) this.findViewById(R.id.performTransaction);
+        performTransaction.setOnClickListener(this);
 
         portfolioDisplay.setText(portfolio.getPortfolioTransactions());
 

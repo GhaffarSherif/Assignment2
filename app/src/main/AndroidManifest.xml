@@ -26,7 +26,7 @@
         </activity>
         <activity
             android:name=".PickCompTransAct"
-            android:label="StockMarket" >
+            android:label="Stock Market" >
             <intent-filter>
                 <action android:name="com.example.cstuser.assignment2.PickCompTransAct" />
                 <category android:name="android.intent.category.DEFAULT" />
@@ -34,7 +34,7 @@
         </activity>
         <activity
             android:name="portfolio.DoTransAct"
-            android:label="Trasaction" >
+            android:label="Transaction" >
             <intent-filter>
                 <action android:name="portfolio.DoTransAct" />
                 <category android:name="android.intent.category.DEFAULT" />

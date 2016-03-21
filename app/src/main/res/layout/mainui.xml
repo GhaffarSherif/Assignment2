@@ -30,11 +30,7 @@
             android:layout_height="wrap_content"
             android:text="@string/exit"
             android:id="@+id/exitButton"
-            android:layout_below="@+id/investorsTextView"
             android:visibility="invisible"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentStart="false"
-            android:layout_toStartOf="@+id/investorsTextView"
             android:layout_weight="1" />
 
         <Button
@@ -42,12 +38,7 @@
             android:layout_height="wrap_content"
             android:text="@string/continueButton"
             android:id="@+id/continueButton"
-            android:layout_alignTop="@+id/exitButton"
             android:visibility="invisible"
-            android:layout_alignParentRight="true"
-            android:layout_alignParentEnd="false"
-            android:layout_toEndOf="@+id/exitButton"
-            android:layout_toRightOf="@+id/exitButton"
             android:layout_weight="1" />
     </LinearLayout>
 

@@ -39,8 +39,11 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
         investorName = (TextView) this.findViewById(R.id.investorName);
 
         company1 = (RadioButton) this.findViewById(R.id.company1);
+        company1.setOnClickListener(this);
         company2 = (RadioButton) this.findViewById(R.id.company2);
+        company2.setOnClickListener(this);
         company3 = (RadioButton) this.findViewById(R.id.company3);
+        company3.setOnClickListener(this);
 
         buy = (RadioButton) this.findViewById(R.id.buy);
         sell = (RadioButton) this.findViewById(R.id.sell);
@@ -54,7 +57,7 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
 
         investorName.setText(thisIntent.getStringExtra(CHOSEN_INVESTOR));
 
-        if(thisIntent.getBooleanExtra(PORTFOLIO_CREATED, false) == false)
+        if(!thisIntent.getBooleanExtra(PORTFOLIO_CREATED, false))
             DoTransAct.portfolio = new InvestorPortfolio(thisIntent.getStringExtra(CHOSEN_INVESTOR));
 
         exitButton.setOnClickListener(this);

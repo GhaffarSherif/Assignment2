@@ -174,6 +174,6 @@ public class InvestorPortfolio implements InvestorInterface {
 
     //Creates row for each transaction and appends to transactionOutput
     private void createRow(int transactionNumber, String company, String transactionType, int quantity, int unitPrice){
-        transactionOutput += String.format("%-19s", transactionNumber) + String.format("%-17s", company) + String.format("%-17s", transactionType) + String.format("%9s", quantity) +  String.format("%8s", quantity*unitPrice) + "\n";
+        transactionOutput += String.format("%-19s", transactionNumber) + String.format("%-13s", company) + String.format("%-17s", transactionType) + String.format("%9s", quantity) +  String.format("%8s", quantity*unitPrice) + "\n";
     }
 }
