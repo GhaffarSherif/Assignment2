@@ -58,28 +58,36 @@ public class DoTransAct extends Activity implements View.OnClickListener, Invest
 
     public void onClick(View v){
         if(v.getId() == performTransaction.getId()){
-            int enteredPrice = Integer.parseInt(price.getText().toString());
-            if(enteredPrice >= 1 && enteredPrice <= 10){
-                if(transactionType.equals("B")){
-                    int enteredQuantity = Integer.parseInt(quantity.getText().toString());
-                    if(enteredQuantity > 0) {
-                        if (enteredQuantity * enteredPrice <= portfolio.cashAvailable) {
-                            portfolio.buyStocks(companyName.getText().toString(), enteredQuantity, enteredPrice);
-                            alertMessage();
+            if(!price.getText().toString().isEmpty()) {
+                int enteredPrice = Integer.parseInt(price.getText().toString());
+                if (enteredPrice >= 1 && enteredPrice <= 10) {
+                    if (transactionType.equals("B")) {
+                        if(!quantity.getText().toString().isEmpty()) {
+                            int enteredQuantity = Integer.parseInt(quantity.getText().toString());
+                            if (enteredQuantity > 0) {
+                                if (enteredQuantity*enteredPrice <= portfolio.cashAvailable) {
+                                    portfolio.buyStocks(companyName.getText().toString(), enteredQuantity, enteredPrice);
+                                    alertMessage();
+                                }
+                                else
+                                    Toast.makeText(getApplicationContext(), "Insufficient funds!", Toast.LENGTH_SHORT).show();
+                            }
+                            else
+                                Toast.makeText(getApplicationContext(), "Invalid quantity!", Toast.LENGTH_SHORT).show();
                         }
                         else
-                            Toast.makeText(getApplicationContext(), "Insufficient funds!", Toast.LENGTH_SHORT).show();
+                            Toast.makeText(getApplicationContext(), "Please enter a quantity!", Toast.LENGTH_SHORT).show();
                     }
-                    else
-                        Toast.makeText(getApplicationContext(), "Invalid quantity!", Toast.LENGTH_SHORT).show();
+                    else if (transactionType.equals("S")) {
+                        portfolio.sellStocks(companyName.getText().toString(), enteredPrice);
+                        alertMessage();
+                    }
                 }
-                else if(transactionType.equals("S")){
-                    portfolio.sellStocks(companyName.getText().toString(), enteredPrice);
-                    alertMessage();
-                }
+                else
+                    Toast.makeText(getApplicationContext(), "Invalid price!", Toast.LENGTH_SHORT).show();
             }
             else
-                Toast.makeText(getApplicationContext(), "Invalid price!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Please enter a price!", Toast.LENGTH_SHORT).show();
         }
     }
 

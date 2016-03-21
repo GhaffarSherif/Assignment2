@@ -60,28 +60,28 @@ public class InvestorPortfolio implements InvestorInterface {
     public void buyStocks(String company, int stocksAmount, int buyPrice){
         int amount;
         if (company.equals(COMPANY1)){
-            amount = company1Stocks*buyPrice;
-            company3Stocks += stocksAmount;
+            amount = stocksAmount*buyPrice;
+            company1Stocks += stocksAmount;
             cashAvailable -= amount;
             transactionType = BUY_LETTER;
             transactionNumber++;
-            createRow(transactionNumber, company, transactionType, company3Stocks, buyPrice);
+            createRow(transactionNumber, company, transactionType, stocksAmount, buyPrice);
         }
         else if (company.equals(COMPANY2)) {
-            amount = company2Stocks*buyPrice;
+            amount = stocksAmount*buyPrice;
             company2Stocks += stocksAmount;
             cashAvailable -= amount;
             transactionType = BUY_LETTER;
             transactionNumber++;
-            createRow(transactionNumber, company, transactionType, company2Stocks, buyPrice);
+            createRow(transactionNumber, company, transactionType, stocksAmount, buyPrice);
         }
         else {
-            amount = company3Stocks*buyPrice;
+            amount = stocksAmount*buyPrice;
             company3Stocks += stocksAmount;
             cashAvailable -= amount;
             transactionType = BUY_LETTER;
             transactionNumber++;
-            createRow(transactionNumber, company, transactionType, company3Stocks, buyPrice);
+            createRow(transactionNumber, company, transactionType, stocksAmount, buyPrice);
         }
     }
 

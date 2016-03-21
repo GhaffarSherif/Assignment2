@@ -49,9 +49,6 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
         sell = (RadioButton) this.findViewById(R.id.sell);
         portfolio = (RadioButton) this.findViewById(R.id.portfolio);
 
-        makeUnclickable();
-
-
         exitButton = (Button) this.findViewById(R.id.exitButton);
         doTransaction = (Button) this.findViewById(R.id.doTransaction);
 
@@ -70,8 +67,16 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
             finish();
         }
         else if(v.getId() == doTransaction.getId()){
-            addExtras();
-            startActivityForResult(i, 1);
+            if(portfolio.isChecked()) {
+                addExtras();
+                startActivityForResult(i, 1);
+            }
+            else if(buy.isChecked() || sell.isChecked()){
+                if(company1.isChecked() || company2.isChecked() || company3.isChecked()){
+                    addExtras();
+                    startActivityForResult(i, 1);
+                }
+            }
         }
         else if(v.getId() == company1.getId()){
             buy.setClickable(true);
@@ -107,13 +112,6 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
             i.putExtra(TRANSACTION_TYPE, SELL_LETTER);
         else if(portfolio.isChecked())
             i.putExtra(TRANSACTION_TYPE, PORTFOLIO_LETTER);
-    }
-
-    private void makeUnclickable() {
-        if (!company1.isChecked() || !company2.isChecked() || !company3.isChecked()){
-            buy.setClickable(false);
-            sell.setClickable(false);
-        }
     }
 }
 

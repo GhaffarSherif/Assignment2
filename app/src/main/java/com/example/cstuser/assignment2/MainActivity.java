@@ -44,14 +44,14 @@ public class MainActivity extends Activity implements View.OnClickListener, Inve
 
     //Code for returning results through data from Activity 2
     public void onActivityResult(int requestCode, int resultCode, Intent data)   {
-        if ((requestCode == 1) && (resultCode == RESULT_OK))   { //AFTER INVESTORS ARE CHOSEN AND RETURN TO MAINACTIVITY
+        if ((requestCode == 1) && (resultCode == RESULT_OK)) { //AFTER INVESTORS ARE CHOSEN AND RETURN TO MAINACTIVITY
             showWidgets(); // Make widgets visible
             Toast.makeText(this,data.getData().toString(), Toast.LENGTH_SHORT).show(); //ONLY FOR TESTING
             chosenInvestor = data.getData().toString();
             investorsTextView.setText(chosenInvestor);
         }
         else {
-            Toast.makeText(this, "No investors chosen, bye!", Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Bye!", Toast.LENGTH_LONG).show();
             finish();
         }
     }
