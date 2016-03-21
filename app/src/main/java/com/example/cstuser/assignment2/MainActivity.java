@@ -3,15 +3,13 @@ package com.example.cstuser.assignment2;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-
 import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
-public class MainActivity extends Activity implements View.OnClickListener {
+public class MainActivity extends Activity implements View.OnClickListener, InvestorInterface {
     Button exitButton;
     Button continueButton;
     TextView labelTextView;
@@ -66,9 +64,8 @@ public class MainActivity extends Activity implements View.OnClickListener {
         else if (v.getId() == continueButton.getId()){
             Intent i = new Intent("com.example.cstuser.assignment2.PickCompTransAct");
 
-            // TO CREATE METHOD TO CHECK SELECTED INVESTORS
             Bundle investor = new Bundle();
-            investor.putString("chosenInvestor", chosenInvestor);
+            investor.putString(CHOSEN_INVESTOR, chosenInvestor);
             i.putExtras(investor);
             startActivityForResult(i, 1);
         }

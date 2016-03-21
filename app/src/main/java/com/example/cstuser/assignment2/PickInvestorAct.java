@@ -8,10 +8,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
-/**
- * Created by sherif on 2016-03-12.
- */
-public class PickInvestorAct extends Activity implements View.OnClickListener {
+public class PickInvestorAct extends Activity implements View.OnClickListener, InvestorInterface {
     Button returnButton;
     Button exitButton;
     CheckBox tonyCheckBox;
@@ -31,18 +28,19 @@ public class PickInvestorAct extends Activity implements View.OnClickListener {
         returnButton.setOnClickListener(this);
         exitButton.setOnClickListener(this);
     }
+
     public void onClick(View v) {
         if (v.getId() == returnButton.getId()) {
             Intent data = new Intent();
 
             if(tonyCheckBox.isChecked() && !mariaCheckBox.isChecked()){
-                data.setData(Uri.parse("Tony"));
+                data.setData(Uri.parse(TONY));
             }
             else if (mariaCheckBox.isChecked() && !tonyCheckBox.isChecked()){
-                data.setData(Uri.parse("Maria"));
+                data.setData(Uri.parse(MARIA));
             }
             else if(tonyCheckBox.isChecked() && mariaCheckBox.isChecked()) {
-                data.setData(Uri.parse("Tony & Maria"));
+                data.setData(Uri.parse(TONY_AND_MARIA));
             }
             else{
                 finish();

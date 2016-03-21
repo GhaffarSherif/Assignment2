@@ -1,6 +1,8 @@
 package portfolio;
 
-public class InvestorPortfolio {
+import com.example.cstuser.assignment2.InvestorInterface;
+
+public class InvestorPortfolio implements InvestorInterface {
     String investorName;
     String company;
     int transactionNumber;
@@ -11,36 +13,36 @@ public class InvestorPortfolio {
     int company1UnitPrice;
     int company2UnitPrice;
     int company3UnitPrice;
-    char transactionType;
+    String transactionType;
 
-    String transactionOutput="";
+    String transactionOutput = PORTFOLIO_HEADER;
 
     public InvestorPortfolio(String name){
-        if (name.equals("Tony")){
+        if (name.equals(TONY)){
             setTonyPortfolio();
         }
-        else if (name.equals("Maria")){
+        else if (name.equals(MARIA)){
             setMariaPortfolio();
         }
-        else if (name.equals("Tony & Maria")){
+        else if (name.equals(TONY_AND_MARIA)){
             setBothPortfolio();
         }
     }
     public void sellStocks(String company, int sellPrice){ // sell all stocks
         int amount; //Amount made after stocks are sold
-        if (company.equals("Company 1")){
+        if (company.equals(COMPANY1)){
             amount = company1Stocks*sellPrice;
             company1Stocks = 0;
             cashAvailable+= amount;
-            transactionType = 'S';
+            transactionType = SELL_LETTER;
             transactionNumber++;
             createRow(transactionNumber, company, transactionType, company1Stocks, sellPrice);
         }
-        else if (company.equals("Company 2")){
+        else if (company.equals(COMPANY2)){
             amount = company2Stocks*sellPrice;
             company2Stocks = 0;
             cashAvailable += amount;
-            transactionType = 'S';
+            transactionType = SELL_LETTER;
             transactionNumber++;
             createRow(transactionNumber, company, transactionType, company2Stocks, sellPrice);
         }
@@ -48,7 +50,7 @@ public class InvestorPortfolio {
             amount = company3Stocks*sellPrice;
             company3Stocks = 0;
             cashAvailable += amount;
-            transactionType = 'S';
+            transactionType = SELL_LETTER;
             transactionNumber++;
             createRow(transactionNumber, company, transactionType, company3Stocks, sellPrice);
         }
@@ -57,19 +59,19 @@ public class InvestorPortfolio {
     //TO DO
     public void buyStocks(String company, int stocksAmount, int buyPrice){
         int amount;
-        if (company.equals("Company 1")){
+        if (company.equals(COMPANY1)){
             amount = company1Stocks*buyPrice;
             company3Stocks += stocksAmount;
             cashAvailable -= amount;
-            transactionType = 'B';
+            transactionType = BUY_LETTER;
             transactionNumber++;
             createRow(transactionNumber, company, transactionType, company3Stocks, buyPrice);
         }
-        else if (company.equals("Company 2")) {
+        else if (company.equals(COMPANY2)) {
             amount = company2Stocks*buyPrice;
             company2Stocks += stocksAmount;
             cashAvailable -= amount;
-            transactionType = 'B';
+            transactionType = BUY_LETTER;
             transactionNumber++;
             createRow(transactionNumber, company, transactionType, company2Stocks, buyPrice);
         }
@@ -77,7 +79,7 @@ public class InvestorPortfolio {
             amount = company3Stocks*buyPrice;
             company3Stocks += stocksAmount;
             cashAvailable -= amount;
-            transactionType = 'B';
+            transactionType = BUY_LETTER;
             transactionNumber++;
             createRow(transactionNumber, company, transactionType, company3Stocks, buyPrice);
         }
@@ -91,13 +93,13 @@ public class InvestorPortfolio {
     //Setup portfolio for tony
     private void setTonyPortfolio(){
 
-        investorName = "Tony";
+        investorName = TONY;
         cashAvailable = 1000;
 
         //Transaction 1
         transactionNumber = 1;
-        company = "Company 1";
-        transactionType = 'B';
+        company = COMPANY1;
+        transactionType = BUY_LETTER;
         company1Stocks = 80;
         company1UnitPrice = 5;
 
@@ -105,8 +107,8 @@ public class InvestorPortfolio {
 
         //Transaction 2
         transactionNumber = 2;
-        company = "Company 2";
-        transactionType = 'B';
+        company = COMPANY2;
+        transactionType = BUY_LETTER;
         company2Stocks= 50;
         company2UnitPrice = 9;
         createRow(transactionNumber, company, transactionType, company2Stocks, company2UnitPrice);
@@ -115,13 +117,13 @@ public class InvestorPortfolio {
     //Setup portfolio for maria
     private void setMariaPortfolio(){
 
-        investorName = "Maria";
+        investorName = MARIA;
         cashAvailable = 2000;
 
         //Transaction 1
         transactionNumber = 1;
-        company = "Company 2";
-        transactionType = 'B';
+        company = COMPANY2;
+        transactionType = BUY_LETTER;
         company2Stocks = 50;
         company2UnitPrice = 9;
 
@@ -129,8 +131,8 @@ public class InvestorPortfolio {
 
         //Transaction 2
         transactionNumber = 2;
-        company = "Company 3";
-        transactionType = 'B';
+        company = COMPANY3;
+        transactionType = BUY_LETTER;
         company3Stocks= 70;
         company3UnitPrice = 5;
         createRow(transactionNumber, company, transactionType, company3Stocks, company3UnitPrice);
@@ -139,13 +141,13 @@ public class InvestorPortfolio {
     //Set up portfolio of maria and tony combined
     private void setBothPortfolio(){
 
-        investorName = "Tony & Maria";
+        investorName = TONY_AND_MARIA;
         cashAvailable = 3000;
 
         //Transaction 1
         transactionNumber = 1;
-        company = "Company 1";
-        transactionType = 'B';
+        company = COMPANY1;
+        transactionType = BUY_LETTER;
         company1Stocks = 80;
         company1UnitPrice = 5;
 
@@ -153,8 +155,8 @@ public class InvestorPortfolio {
 
         //Transaction2
         transactionNumber = 2;
-        company = "Company 2";
-        transactionType = 'B';
+        company = COMPANY2;
+        transactionType = BUY_LETTER;
         company2Stocks = 100;
         company2UnitPrice = 9;
 
@@ -162,8 +164,8 @@ public class InvestorPortfolio {
 
         //Transaction3
         transactionNumber = 3;
-        company = "Company 3";
-        transactionType = 'B';
+        company = COMPANY3;
+        transactionType = BUY_LETTER;
         company3Stocks = 70;
         company3UnitPrice = 5;
 
@@ -171,9 +173,7 @@ public class InvestorPortfolio {
     }
 
     //Creates row for each transaction and appends to transactionOutput
-    private String createRow(int transactionNumber, String company, char transactionType, int quantity, int unitPrice){
-        transactionOutput += transactionNumber + "\t" + company + "\t" + transactionType + "\t" + quantity + "\t" +  quantity*unitPrice + "\n";
-        return transactionNumber + "\t" + company + "\t" + transactionType + "\t" + quantity + "\t" +  quantity*unitPrice; //quantity*unitPrice is TOTAL
+    private void createRow(int transactionNumber, String company, String transactionType, int quantity, int unitPrice){
+        transactionOutput += String.format("%-19s", transactionNumber) + String.format("%-17s", company) + String.format("%-17s", transactionType) + String.format("%9s", quantity) +  String.format("%8s", quantity*unitPrice) + "\n";
     }
-
 }

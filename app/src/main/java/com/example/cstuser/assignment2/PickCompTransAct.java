@@ -8,18 +8,13 @@ import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
 
-import java.io.Serializable;
-
 import portfolio.DoTransAct;
 import portfolio.InvestorPortfolio;
 
 
-/**
- * Created by sherif on 2016-03-12.
- */
-public class PickCompTransAct extends Activity implements View.OnClickListener {
-    Intent thisIntent;
+public class PickCompTransAct extends Activity implements View.OnClickListener, InvestorInterface {
     Intent i;
+    Intent thisIntent;
 
     TextView investorName;
 
@@ -51,11 +46,16 @@ public class PickCompTransAct extends Activity implements View.OnClickListener {
         sell = (RadioButton) this.findViewById(R.id.sell);
         portfolio = (RadioButton) this.findViewById(R.id.portfolio);
 
+        makeUnclickable();
+
+
         exitButton = (Button) this.findViewById(R.id.exitButton);
         doTransaction = (Button) this.findViewById(R.id.doTransaction);
 
-        investorName.setText(thisIntent.getStringExtra("chosenInvestor"));
-        DoTransAct.portfolio = new InvestorPortfolio(thisIntent.getStringExtra("chosenInvestor"));
+        investorName.setText(thisIntent.getStringExtra(CHOSEN_INVESTOR));
+
+        if(thisIntent.getBooleanExtra(PORTFOLIO_CREATED, false) == false)
+            DoTransAct.portfolio = new InvestorPortfolio(thisIntent.getStringExtra(CHOSEN_INVESTOR));
 
         exitButton.setOnClickListener(this);
         doTransaction.setOnClickListener(this);
@@ -70,31 +70,46 @@ public class PickCompTransAct extends Activity implements View.OnClickListener {
             addExtras();
             startActivityForResult(i, 1);
         }
+        else if(v.getId() == company1.getId()){
+            buy.setClickable(true);
+            sell.setClickable(true);
+        }
+        else if(v.getId() == company2.getId()){
+            buy.setClickable(true);
+            sell.setClickable(true);
+        }
+        else if(v.getId() == company3.getId()){
+            buy.setClickable(true);
+            sell.setClickable(true);
+        }
     }
 
     private void addExtras(){
         i = new Intent("portfolio.DoTransAct");
 
-        i.putExtra("investorName", thisIntent.getStringExtra("chosenInvestor"));
+        i.putExtra(INVESTOR_NAME, thisIntent.getStringExtra(CHOSEN_INVESTOR));
 
-        if(company1.isChecked()){
-            i.putExtra("chosenCompany", "1");
-        }
-        else if(company2.isChecked()){
-            i.putExtra("chosenCompany", "2");
-        }
-        else if(company3.isChecked()){
-            i.putExtra("chosenCompany", "3");
-        }
+        if(company1.isChecked())
+            i.putExtra(CHOSEN_COMPANY, COMPANY1);
+        else if(company2.isChecked())
+            i.putExtra(CHOSEN_COMPANY, COMPANY2);
+        else if(company3.isChecked())
+            i.putExtra(CHOSEN_COMPANY, COMPANY3);
+        else
+            i.putExtra(CHOSEN_COMPANY, NO_COMPANY);
 
-        if(buy.isChecked()){
-            i.putExtra("transactionType", "B");
-        }
-        else if(sell.isChecked()){
-            i.putExtra("transactionType", "S");
-        }
-        else if(portfolio.isChecked()){
-            i.putExtra("transactionType", "P");
+        if(buy.isChecked())
+            i.putExtra(TRANSACTION_TYPE, BUY_LETTER);
+        else if(sell.isChecked())
+            i.putExtra(TRANSACTION_TYPE, SELL_LETTER);
+        else if(portfolio.isChecked())
+            i.putExtra(TRANSACTION_TYPE, PORTFOLIO_LETTER);
+    }
+
+    private void makeUnclickable() {
+        if (!company1.isChecked() || !company2.isChecked() || !company3.isChecked()){
+            buy.setClickable(false);
+            sell.setClickable(false);
         }
     }
 }

@@ -18,7 +18,7 @@
     <string name="continueButton">Continue</string>
     <string name="labelTextView">Selected Investors:</string>
 
-    <string name="companyLabel">Company: </string>
+    <string name="companyLabel">Company </string>
     <string name="stocksLabel">Current Stocks: </string>
     <string name="price">Price</string>
     <string name="quantity">Quantity</string>
@@ -28,4 +28,5 @@
     <string name="maria">Maria</string>
     <string name="returnButton">Return</string>
     <string name="investorName">[INVESTOR_NAME]</string>
+    <string name="availableCash">Available Cash:</string>
 </resources>
