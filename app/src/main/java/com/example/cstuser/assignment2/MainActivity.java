@@ -13,7 +13,7 @@ import android.widget.Toast;
  * This class contains the methods to run the Main user interface
  */
 public class MainActivity extends Activity implements View.OnClickListener, InvestorInterface {
-    // Widgets we will use in this class from the maniui.xml
+    // Widgets we will use in this class from the mainui.xml
     Button exitButton;
     Button continueButton;
     TextView labelTextView;
@@ -49,7 +49,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Inve
     /**
      * When PickCompTransAct return a value, it will land in this method
      * @param requestCode Code for when sending data
-     * @param resultCode Code for when recieving data
+     * @param resultCode Code for when receiving data
      * @param data The data that will hold the investor name
      */
     public void onActivityResult(int requestCode, int resultCode, Intent data)   {
@@ -66,7 +66,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Inve
     }
 
     @Override
-    public void onClick(View v) { // Onlick listeners for exit and continue buttons
+    public void onClick(View v) { // OnClick listeners for exit and continue buttons
         if (v.getId() == exitButton.getId()){
             finish();
         }

@@ -6,7 +6,7 @@ import com.example.cstuser.assignment2.InvestorInterface;
  * This class will create an individual portfolio that will keep track of stocks, price and cash for an investor
  */
 public class InvestorPortfolio implements InvestorInterface {
-    // The following are data members necissary to keep track of the stocks of different companies and their price
+    // The following are data members necessary to keep track of the stocks of different companies and their price
     String investorName;
     String company;
     int transactionNumber;
@@ -113,7 +113,7 @@ public class InvestorPortfolio implements InvestorInterface {
     }
 
     /**
-     * Setting up the portfolo according to Tony's inital table
+     * Setting up the portfolio according to Tony's initial table
      */
     private void setTonyPortfolio(){
 
@@ -139,7 +139,7 @@ public class InvestorPortfolio implements InvestorInterface {
     }
 
     /**
-     * Setting up the portfolo according to Maria's inital table
+     * Setting up the portfolio according to Maria's initial table
      */
     private void setMariaPortfolio(){
 
@@ -165,7 +165,7 @@ public class InvestorPortfolio implements InvestorInterface {
     }
 
     /**
-     * * Setting up the portfolo according to Ton and Maria's  inital tables combined
+     * * Setting up the portfolio according to Tony and Maria's initial tables combined
      */
     private void setBothPortfolio(){
 

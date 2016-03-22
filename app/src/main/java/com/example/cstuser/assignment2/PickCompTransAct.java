@@ -11,11 +11,15 @@ import android.widget.TextView;
 import portfolio.DoTransAct;
 import portfolio.InvestorPortfolio;
 
-
+/**
+ * This class will allow a user to select a company and a transaction type. Additionally, the user
+ * can choose to only view their portfolio, in which case a company is not required to be selected.
+ */
 public class PickCompTransAct extends Activity implements View.OnClickListener, InvestorInterface {
-    Intent i;
-    Intent thisIntent;
+    Intent i; //The intent to be sent to DoTransAct.java
+    Intent thisIntent; //The intent passed to this program
 
+    //Various elements found in the UI
     TextView investorName;
 
     RadioButton company1;
@@ -34,6 +38,7 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pickcomptransui);
 
+        //Initializing the fields
         thisIntent = getIntent();
 
         investorName = (TextView) this.findViewById(R.id.investorName);
@@ -61,6 +66,7 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
         doTransaction.setOnClickListener(this);
     }
 
+    //OnClick listeners for the exit button and do transaction button
     @Override
     public void onClick(View v) {
         if (v.getId() == exitButton.getId()){
@@ -78,25 +84,18 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
                 }
             }
         }
-        else if(v.getId() == company1.getId()){
-            buy.setClickable(true);
-            sell.setClickable(true);
-        }
-        else if(v.getId() == company2.getId()){
-            buy.setClickable(true);
-            sell.setClickable(true);
-        }
-        else if(v.getId() == company3.getId()){
-            buy.setClickable(true);
-            sell.setClickable(true);
-        }
     }
 
+    /**
+     * Initializes the Intent i and adds the necessary extras to it
+     */
     private void addExtras(){
         i = new Intent("portfolio.DoTransAct");
 
+        //Adds the investor's name as an extra
         i.putExtra(INVESTOR_NAME, thisIntent.getStringExtra(CHOSEN_INVESTOR));
 
+        //Adds the company's name as an extra. Puts the NO_COMPANY constant if no company is selected
         if(company1.isChecked())
             i.putExtra(CHOSEN_COMPANY, COMPANY1);
         else if(company2.isChecked())
@@ -106,6 +105,7 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
         else
             i.putExtra(CHOSEN_COMPANY, NO_COMPANY);
 
+        //Adds the transaction type as an extra
         if(buy.isChecked())
             i.putExtra(TRANSACTION_TYPE, BUY_LETTER);
         else if(sell.isChecked())

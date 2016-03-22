@@ -14,9 +14,10 @@ import com.example.cstuser.assignment2.InvestorInterface;
 import com.example.cstuser.assignment2.R;
 
 public class DoTransAct extends Activity implements View.OnClickListener, InvestorInterface {
-    Intent thisIntent;
-    String transactionType;
+    Intent thisIntent; //The intent passed to this program
+    String transactionType; //String containing the transaction type
 
+    //Various elements found in the UI
     TextView portfolioDisplay;
     TextView companyName;
     TextView currentStocks;
@@ -33,6 +34,7 @@ public class DoTransAct extends Activity implements View.OnClickListener, Invest
         super.onCreate(savedInstanceState);
         setContentView(R.layout.dotransui);
 
+        //Initialize the fields
         thisIntent = getIntent();
         transactionType = thisIntent.getStringExtra(TRANSACTION_TYPE);
 
@@ -56,16 +58,17 @@ public class DoTransAct extends Activity implements View.OnClickListener, Invest
         setUpButtons();
     }
 
+
     public void onClick(View v){
         if(v.getId() == performTransaction.getId()){
-            if(!price.getText().toString().isEmpty()) {
+            if(!price.getText().toString().isEmpty()) { //Verify that something was entered for the price
                 int enteredPrice = Integer.parseInt(price.getText().toString());
-                if (enteredPrice >= 1 && enteredPrice <= 10) {
+                if (enteredPrice >= 1 && enteredPrice <= 10) { //Verify that the price is within the limits
                     if (transactionType.equals("B")) {
-                        if(!quantity.getText().toString().isEmpty()) {
+                        if(!quantity.getText().toString().isEmpty()) { //Verify that something was entered for the quantity
                             int enteredQuantity = Integer.parseInt(quantity.getText().toString());
-                            if (enteredQuantity > 0) {
-                                if (enteredQuantity*enteredPrice <= portfolio.cashAvailable) {
+                            if (enteredQuantity > 0) { //Verify that the quantity in a non-negative, non-zero number
+                                if (enteredQuantity*enteredPrice <= portfolio.cashAvailable) { //Verify that the investor has enough money for the purchase
                                     portfolio.buyStocks(companyName.getText().toString(), enteredQuantity, enteredPrice);
                                     alertMessage();
                                 }
