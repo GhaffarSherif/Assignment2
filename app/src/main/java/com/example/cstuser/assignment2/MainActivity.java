@@ -9,16 +9,20 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+/**
+ * This class contains the methods to run the Main user interface
+ */
 public class MainActivity extends Activity implements View.OnClickListener, InvestorInterface {
+    // Widgets we will use in this class from the maniui.xml
     Button exitButton;
     Button continueButton;
     TextView labelTextView;
     TextView investorsTextView;
 
-    String chosenInvestor;
+    String chosenInvestor; // Name of investor that is chosen
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    protected void onCreate(Bundle savedInstanceState) { // When class is created
         super.onCreate(savedInstanceState);
         setContentView(R.layout.mainui);
 
@@ -33,7 +37,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Inve
 
         Toast.makeText(getApplicationContext(), "Welcome", Toast.LENGTH_SHORT).show();
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
+        handler.postDelayed(new Runnable() { // New activity start is delayed
             @Override
             public void run() {
                 Intent i = new Intent("com.example.cstuser.assignment2.PickInvestorAct");
@@ -42,7 +46,12 @@ public class MainActivity extends Activity implements View.OnClickListener, Inve
         }, 3000);
     }
 
-    //Code for returning results through data from Activity 2
+    /**
+     * When PickCompTransAct return a value, it will land in this method
+     * @param requestCode Code for when sending data
+     * @param resultCode Code for when recieving data
+     * @param data The data that will hold the investor name
+     */
     public void onActivityResult(int requestCode, int resultCode, Intent data)   {
         if ((requestCode == 1) && (resultCode == RESULT_OK)) { //AFTER INVESTORS ARE CHOSEN AND RETURN TO MAINACTIVITY
             showWidgets(); // Make widgets visible
@@ -57,7 +66,7 @@ public class MainActivity extends Activity implements View.OnClickListener, Inve
     }
 
     @Override
-    public void onClick(View v) {
+    public void onClick(View v) { // Onlick listeners for exit and continue buttons
         if (v.getId() == exitButton.getId()){
             finish();
         }
@@ -71,6 +80,9 @@ public class MainActivity extends Activity implements View.OnClickListener, Inve
         }
     }
 
+    /**
+     * This method will change the visibility of the widgets that are on the screen which will be used when we return to mainactivty
+     */
     private void showWidgets(){
         exitButton.setVisibility(View.VISIBLE);
         continueButton.setVisibility(View.VISIBLE);

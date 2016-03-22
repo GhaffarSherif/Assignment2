@@ -2,7 +2,11 @@ package portfolio;
 
 import com.example.cstuser.assignment2.InvestorInterface;
 
+/**
+ * This class will create an individual portfolio that will keep track of stocks, price and cash for an investor
+ */
 public class InvestorPortfolio implements InvestorInterface {
+    // The following are data members necissary to keep track of the stocks of different companies and their price
     String investorName;
     String company;
     int transactionNumber;
@@ -15,8 +19,12 @@ public class InvestorPortfolio implements InvestorInterface {
     int company3UnitPrice;
     String transactionType;
 
-    String transactionOutput = PORTFOLIO_HEADER;
+    String transactionOutput = PORTFOLIO_HEADER; //Header for the output
 
+    /**
+     * Constructor that creates a portolio or either Tony, Maria or both
+     * @param name carries that name of the investor to copy their portfolio
+     */
     public InvestorPortfolio(String name){
         if (name.equals(TONY)){
             setTonyPortfolio();
@@ -28,6 +36,12 @@ public class InvestorPortfolio implements InvestorInterface {
             setBothPortfolio();
         }
     }
+
+    /**
+     * This method will sell ALL stocks of a selected company
+     * @param company The company name that we want to sell stocks from
+     * @param sellPrice The price from 1-10 to sell these stocks
+     */
     public void sellStocks(String company, int sellPrice){ // sell all stocks
         int amount; //Amount made after stocks are sold
         if (company.equals(COMPANY1)){
@@ -56,7 +70,12 @@ public class InvestorPortfolio implements InvestorInterface {
         }
     }
 
-    //TO DO
+    /**
+     * Buy stocks from selected company for a certain price
+     * @param company name of company we want to buy from
+     * @param stocksAmount the amount of stocks we want to buy
+     * @param buyPrice the price we want to pay per stock
+     */
     public void buyStocks(String company, int stocksAmount, int buyPrice){
         int amount;
         if (company.equals(COMPANY1)){
@@ -85,12 +104,17 @@ public class InvestorPortfolio implements InvestorInterface {
         }
     }
 
-    //Return all the transactions for this portfolio
+    /**
+     * Return all the transactions for this portfolio
+     * @return Return all the transactions for this portfolio
+     */
     public String getPortfolioTransactions(){
         return transactionOutput;
     }
 
-    //Setup portfolio for tony
+    /**
+     * Setting up the portfolo according to Tony's inital table
+     */
     private void setTonyPortfolio(){
 
         investorName = TONY;
@@ -114,7 +138,9 @@ public class InvestorPortfolio implements InvestorInterface {
         createRow(transactionNumber, company, transactionType, company2Stocks, company2UnitPrice);
     }
 
-    //Setup portfolio for maria
+    /**
+     * Setting up the portfolo according to Maria's inital table
+     */
     private void setMariaPortfolio(){
 
         investorName = MARIA;
@@ -138,7 +164,9 @@ public class InvestorPortfolio implements InvestorInterface {
         createRow(transactionNumber, company, transactionType, company3Stocks, company3UnitPrice);
     }
 
-    //Set up portfolio of maria and tony combined
+    /**
+     * * Setting up the portfolo according to Ton and Maria's  inital tables combined
+     */
     private void setBothPortfolio(){
 
         investorName = TONY_AND_MARIA;
@@ -172,7 +200,14 @@ public class InvestorPortfolio implements InvestorInterface {
         createRow(transactionNumber, company, transactionType, company3Stocks, company3UnitPrice);
     }
 
-    //Creates row for each transaction and appends to transactionOutput
+    /**
+     * Creates row for each transaction and appends to transactionOutput
+     * @param transactionNumber the transaction number
+     * @param company the company name
+     * @param transactionType the type of transaction (either B, S or P)
+     * @param quantity number of stocks bought or sold
+     * @param unitPrice Price per stock bought or sold
+     */
     private void createRow(int transactionNumber, String company, String transactionType, int quantity, int unitPrice){
         transactionOutput += String.format("%-19s", transactionNumber) + String.format("%-13s", company) + String.format("%-17s", transactionType) + String.format("%9s", quantity) +  String.format("%8s", quantity*unitPrice) + "\n";
     }

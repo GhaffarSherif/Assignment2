@@ -8,14 +8,18 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
 
+/**
+ * This class will allow the user to select an investor and return that value
+ */
 public class PickInvestorAct extends Activity implements View.OnClickListener, InvestorInterface {
+    // Widgets that we will use in this class
     Button returnButton;
     Button exitButton;
     CheckBox tonyCheckBox;
     CheckBox mariaCheckBox;
 
     @Override
-    public void onCreate(Bundle savedInstanceState){
+    public void onCreate(Bundle savedInstanceState){ //When the activity is created
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pickinvestorui);
 
@@ -29,6 +33,7 @@ public class PickInvestorAct extends Activity implements View.OnClickListener, I
         exitButton.setOnClickListener(this);
     }
 
+    //Onclick listeners for the buttons
     public void onClick(View v) {
         if (v.getId() == returnButton.getId()) {
             Intent data = new Intent();
