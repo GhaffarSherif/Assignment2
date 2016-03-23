@@ -62,8 +62,8 @@ public class DoTransAct extends Activity implements View.OnClickListener, Invest
     public void onClick(View v){
         if(v.getId() == performTransaction.getId()){
             if(!price.getText().toString().isEmpty()) { //Verify that something was entered for the price
-                int enteredPrice = Integer.parseInt(price.getText().toString());
-                if (enteredPrice >= 1 && enteredPrice <= 10) { //Verify that the price is within the limits
+                double enteredPrice = Double.parseDouble(price.getText().toString());
+                if (enteredPrice >= PRICE_LOWER_LIMIT && enteredPrice <= PRICE_UPPER_LIMIT) { //Verify that the price is within the limits
                     if (transactionType.equals("B")) {
                         if(!quantity.getText().toString().isEmpty()) { //Verify that something was entered for the quantity
                             int enteredQuantity = Integer.parseInt(quantity.getText().toString());
@@ -135,7 +135,7 @@ public class DoTransAct extends Activity implements View.OnClickListener, Invest
                 switch (which) {
                     case DialogInterface.BUTTON_POSITIVE:
                         Intent i = new Intent("com.example.cstuser.assignment2.PickCompTransAct");
-                        i.putExtra(INVESTOR_NAME, thisIntent.getStringExtra(INVESTOR_NAME));
+                        i.putExtra(CHOSEN_INVESTOR, thisIntent.getStringExtra(CHOSEN_INVESTOR));
                         i.putExtra(PORTFOLIO_CREATED, true);
                         startActivity(i);
                         break;

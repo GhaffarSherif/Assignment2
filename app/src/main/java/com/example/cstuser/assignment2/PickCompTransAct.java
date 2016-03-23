@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import portfolio.DoTransAct;
 import portfolio.InvestorPortfolio;
@@ -82,6 +83,8 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
                     addExtras();
                     startActivityForResult(i, 1);
                 }
+                else
+                    Toast.makeText(getApplicationContext(), "You must select a company to do this type of transaction!", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -93,7 +96,7 @@ public class PickCompTransAct extends Activity implements View.OnClickListener, 
         i = new Intent("portfolio.DoTransAct");
 
         //Adds the investor's name as an extra
-        i.putExtra(INVESTOR_NAME, thisIntent.getStringExtra(CHOSEN_INVESTOR));
+        i.putExtra(CHOSEN_INVESTOR, thisIntent.getStringExtra(CHOSEN_INVESTOR));
 
         //Adds the company's name as an extra. Puts the NO_COMPANY constant if no company is selected
         if(company1.isChecked())

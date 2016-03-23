@@ -5,13 +5,43 @@
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/portfolioDisplay"
+        android:text="@string/portfolioDisplayTitle"
+        android:id="@+id/portfolioDisplayTitle"
+        android:textSize="20sp"
         android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textSize="10sp"
-        android:typeface="monospace"
+        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp" />
+
+    <ScrollView
+        android:layout_width="wrap_content"
+        android:layout_height="250dp"
+        android:id="@+id/portfolioVertScrollView"
+        android:layout_below="@+id/portfolioDisplayTitle">
+
+        <HorizontalScrollView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/portfolioScrollView">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/portfolioDisplay"
+                android:textSize="12sp"
+                android:typeface="monospace"
+                android:layout_marginTop="20dp" />
+        </HorizontalScrollView>
+    </ScrollView>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/scrollHint"
+        android:id="@+id/scrollHint"
+        android:textSize="12sp"
+        android:typeface="normal"
+        android:layout_below="@+id/portfolioVertScrollView"
+        android:layout_centerHorizontal="true" />
 
     <Button
         android:layout_width="wrap_content"
@@ -28,7 +58,7 @@
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
+        android:inputType="number|numberDecimal"
         android:ems="10"
         android:id="@+id/price"
         android:layout_above="@+id/performTransaction"

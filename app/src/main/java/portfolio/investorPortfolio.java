@@ -10,7 +10,7 @@ public class InvestorPortfolio implements InvestorInterface {
     String investorName;
     String company;
     int transactionNumber;
-    int cashAvailable;
+    double cashAvailable;
     int company1Stocks;
     int company2Stocks;
     int company3Stocks;
@@ -42,31 +42,31 @@ public class InvestorPortfolio implements InvestorInterface {
      * @param company The company name that we want to sell stocks from
      * @param sellPrice The price from 1-10 to sell these stocks
      */
-    public void sellStocks(String company, int sellPrice){ // sell all stocks
-        int amount; //Amount made after stocks are sold
+    public void sellStocks(String company, double sellPrice){ // sell all stocks
+        double amount; //Amount made after stocks are sold
         if (company.equals(COMPANY1)){
             amount = company1Stocks*sellPrice;
-            company1Stocks = 0;
-            cashAvailable+= amount;
+            cashAvailable += amount;
             transactionType = SELL_LETTER;
             transactionNumber++;
-            createRow(transactionNumber, company, transactionType, company1Stocks, sellPrice);
+            createRow(transactionNumber, company, transactionType, company1Stocks, amount);
+            company1Stocks = 0;
         }
         else if (company.equals(COMPANY2)){
             amount = company2Stocks*sellPrice;
-            company2Stocks = 0;
             cashAvailable += amount;
             transactionType = SELL_LETTER;
             transactionNumber++;
-            createRow(transactionNumber, company, transactionType, company2Stocks, sellPrice);
+            createRow(transactionNumber, company, transactionType, company2Stocks, amount);
+            company2Stocks = 0;
         }
         else{
             amount = company3Stocks*sellPrice;
-            company3Stocks = 0;
             cashAvailable += amount;
             transactionType = SELL_LETTER;
             transactionNumber++;
-            createRow(transactionNumber, company, transactionType, company3Stocks, sellPrice);
+            createRow(transactionNumber, company, transactionType, company3Stocks, amount);
+            company3Stocks = 0;
         }
     }
 
@@ -76,15 +76,15 @@ public class InvestorPortfolio implements InvestorInterface {
      * @param stocksAmount the amount of stocks we want to buy
      * @param buyPrice the price we want to pay per stock
      */
-    public void buyStocks(String company, int stocksAmount, int buyPrice){
-        int amount;
+    public void buyStocks(String company, int stocksAmount, double buyPrice){
+        double amount;
         if (company.equals(COMPANY1)){
             amount = stocksAmount*buyPrice;
             company1Stocks += stocksAmount;
             cashAvailable -= amount;
             transactionType = BUY_LETTER;
             transactionNumber++;
-            createRow(transactionNumber, company, transactionType, stocksAmount, buyPrice);
+            createRow(transactionNumber, company, transactionType, stocksAmount, amount);
         }
         else if (company.equals(COMPANY2)) {
             amount = stocksAmount*buyPrice;
@@ -92,7 +92,7 @@ public class InvestorPortfolio implements InvestorInterface {
             cashAvailable -= amount;
             transactionType = BUY_LETTER;
             transactionNumber++;
-            createRow(transactionNumber, company, transactionType, stocksAmount, buyPrice);
+            createRow(transactionNumber, company, transactionType, stocksAmount, amount);
         }
         else {
             amount = stocksAmount*buyPrice;
@@ -100,7 +100,7 @@ public class InvestorPortfolio implements InvestorInterface {
             cashAvailable -= amount;
             transactionType = BUY_LETTER;
             transactionNumber++;
-            createRow(transactionNumber, company, transactionType, stocksAmount, buyPrice);
+            createRow(transactionNumber, company, transactionType, stocksAmount, amount);
         }
     }
 
@@ -208,7 +208,7 @@ public class InvestorPortfolio implements InvestorInterface {
      * @param quantity number of stocks bought or sold
      * @param unitPrice Price per stock bought or sold
      */
-    private void createRow(int transactionNumber, String company, String transactionType, int quantity, int unitPrice){
-        transactionOutput += String.format("%-19s", transactionNumber) + String.format("%-13s", company) + String.format("%-17s", transactionType) + String.format("%9s", quantity) +  String.format("%8s", quantity*unitPrice) + "\n";
+    private void createRow(int transactionNumber, String company, String transactionType, int quantity, double amount){
+        transactionOutput += String.format("%-19s", transactionNumber) + String.format("%-13s", company) + String.format("%-17s", transactionType) + String.format("%9s", quantity) +  String.format("%10.2f", amount) + "\n";
     }
 }

@@ -1,23 +1,18 @@
 <resources>
     <string name="app_name">Assignment2</string>
-
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
 
     <string name="company1">Company 1</string>
     <string name="company2">Company 2</string>
     <string name="company3">Company 3</string>
-
     <string name="buy">Buy</string>
     <string name="sell">Sell</string>
     <string name="portfolio">Portfolio</string>
-
     <string name="exit">Exit</string>
     <string name="doTransaction">Do Transaction</string>
-
     <string name="continueButton">Continue</string>
     <string name="labelTextView">Selected Investors:</string>
-
     <string name="companyLabel">Company </string>
     <string name="stocksLabel">Current Stocks: </string>
     <string name="price">Price</string>
@@ -29,4 +24,6 @@
     <string name="returnButton">Return</string>
     <string name="investorName">[INVESTOR_NAME]</string>
     <string name="availableCash">Available Cash:</string>
+    <string name="portfolioDisplayTitle">Portfolio</string>
+    <string name="scrollHint">(Please scroll to the side to view the rest)</string>
 </resources>
