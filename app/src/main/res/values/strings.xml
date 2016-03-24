@@ -26,4 +26,9 @@
     <string name="availableCash">Available Cash:</string>
     <string name="portfolioDisplayTitle">Portfolio</string>
     <string name="scrollHint">(Please scroll to the side to view the rest)</string>
+    <string name="transactionNumber">Transaction\nNumber</string>
+    <string name="companyName">Company\nName</string>
+    <string name="transactionType">Transaction\nType</string>
+    <string name="unitPrice">Unit\nPrice</string>
+    <string name="total">Total</string>
 </resources>

@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TableLayout;
+import android.widget.TableRow;
 import android.widget.TextView;
 import android.widget.Toast;
 import com.example.cstuser.assignment2.InvestorInterface;
@@ -27,6 +29,8 @@ public class DoTransAct extends Activity implements View.OnClickListener, Invest
     EditText quantity;
     Button performTransaction;
 
+    //TableLayout asdf;
+
     public static InvestorPortfolio portfolio;
 
     @Override
@@ -38,7 +42,15 @@ public class DoTransAct extends Activity implements View.OnClickListener, Invest
         thisIntent = getIntent();
         transactionType = thisIntent.getStringExtra(TRANSACTION_TYPE);
 
-        portfolioDisplay = (TextView) this.findViewById(R.id.portfolioDisplay);
+        //portfolioDisplay = (TextView) this.findViewById(R.id.portfolioDisplay);
+
+        /* I THINK I FIGURED THIS SHIT OUT :D
+        asdf = (TableLayout) this.findViewById(R.id.tableLayout);
+        TableRow asdfRow = (TableRow) asdf.getChildAt(0);
+        int childCount = asdf.getChildCount();
+        asdf.addView(asdfRow, childCount-2);
+        */
+
         companyName = (TextView) this.findViewById(R.id.companyName);
         companyName.setText(thisIntent.getStringExtra(CHOSEN_COMPANY));
         currentStocks = (TextView) this.findViewById(R.id.currentStocks);

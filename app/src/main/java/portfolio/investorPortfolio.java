@@ -206,7 +206,7 @@ public class InvestorPortfolio implements InvestorInterface {
      * @param company the company name
      * @param transactionType the type of transaction (either B, S or P)
      * @param quantity number of stocks bought or sold
-     * @param unitPrice Price per stock bought or sold
+     * @param amount total amount of the transaction
      */
     private void createRow(int transactionNumber, String company, String transactionType, int quantity, double amount){
         transactionOutput += String.format("%-19s", transactionNumber) + String.format("%-13s", company) + String.format("%-17s", transactionType) + String.format("%9s", quantity) +  String.format("%10.2f", amount) + "\n";
